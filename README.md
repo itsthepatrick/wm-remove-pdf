@@ -36,6 +36,7 @@ Upcleaner is supposed to remove a color in selected box, Inpage is for cleaning 
 ```bash
 python main.py
 ```
+(works for all three)
 
 ## Contributing
 
