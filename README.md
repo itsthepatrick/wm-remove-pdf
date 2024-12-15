@@ -23,6 +23,11 @@ B)install packages by hand
 ```bash
 pip install [name of the package+version]
 ```
+
+
+## info
+Upcleaner is supposed to remove a color in selected box, Inpage is for cleaning everywhere a color is detected, BetterInpage is supposed to be better version of inpage, idk if it's that better or not
+
 ## Usage
 
 - with visual studio:open main.py,click on f5(or fn+f5), select python debugger, the rest is obvious
