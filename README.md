@@ -4,6 +4,13 @@ WMrem is a pdf watermark remover that i made because i needed.
 
 might(probably) be (is) full of bugs
 
+# Updates:
+
+V1.0.0: files were created
+
+V1.0.1:BetterInpage now has a way to detect repeated images(So you can remove those full-screen watermarks!)
+
+
 ## Installation
 
 A)Use the package manager [pip](https://pip.pypa.io/en/stable/) and requirements.txt
