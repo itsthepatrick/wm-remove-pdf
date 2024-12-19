@@ -6,10 +6,14 @@ might(probably) be (is) full of bugs
 
 # Updates:
 
-V1.0.0: files were created
+V1.0.0: 
 
-V1.0.1:BetterInpage now has a way to detect repeated images(So you can remove those full-screen watermarks!)
+- files were created
 
+V1.0.1:
+- BetterInpage now has a way to detect repeated images(So you can remove those full-screen watermarks!)
+- BetterInpage now has a variable to change DPI (more dpi,more quality-to some point- , slower processing , and less dpi,the other way around)
+- there is a function to remove temp files if the app was closed before it being finished
 
 ## Installation
 
