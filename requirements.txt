@@ -1,0 +1,11 @@
+tkinter
+PyPDF2==3.0.1
+fpdf==1.7.2
+Pillow==11.0.0
+natsort==8.4.0
+pdf2image==1.17.0
+numpy==2.1.2
+tqdm==4.67.1
+scipy==1.14.1
+PyMuPDF==1.25.1
+ImageHash
