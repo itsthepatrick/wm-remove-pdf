@@ -9,6 +9,9 @@ class PdfSplitterApp:
         self.root.title("PDF Splitter")
         self.root.geometry("400x200")
 
+        # Variable to track process completion
+        self.process_done = False
+
         # Create UI elements
         self.create_widgets()
 
@@ -24,6 +27,10 @@ class PdfSplitterApp:
         # Progress bar
         self.progress = ttk.Progressbar(self.root, orient="horizontal", length=300, mode="determinate")
         self.progress.pack(pady=10)
+
+        # Close event binding to track manual closure
+        self.root.protocol("WM_DELETE_WINDOW", self.on_close)
+
 
     def choose_file(self):
         # Open file dialog to select a PDF
@@ -84,16 +91,31 @@ class PdfSplitterApp:
                     txt_file.write(f"[{', '.join(output_filenames)}]")
                 print(f"Output filenames saved to output.txt")
 
+                # Set the process completion variable to True
+                self.process_done = True
+                self.root.quit()  # Quit the application after completion
+
+
         except Exception as e:
             messagebox.showerror("Error", f"An error occurred: {e}")
         finally:
             # Close the app after completion
             self.root.destroy()
 
+
+    def on_close(self):
+        # Check if the process is done
+        if self.process_done:
+            print("Process completed successfully. Closing app...")
+        else:
+            print("App closed by user before process completion.")
+        self.root.destroy()
+
 def run():
     root = tk.Tk()
     app = PdfSplitterApp(root)
     root.mainloop()
-
+    return app 
+    
 if __name__ == "__main__":
     run()

@@ -1,5 +1,7 @@
 import splitter  # Assuming splitter.py is in the same directory
 import betterinpage  # Assuming wmremv2.py is in the same directory
+import time
+import page_remover
 import pdfer  # Assuming pdfer.py is in the same directory
 import os
 import shutil
@@ -39,18 +41,48 @@ if __name__ == "__main__":
 
         # Run splitter.py - First step
         print("Running PdfSplitterApp...")
-        splitter.run()  # Calls the function in splitter.py to start the app
-        print("PdfSplitterApp completed.")
+        splitter_app = splitter.run()
+        if not splitter_app.process_done:
+            print("Splitter process was not completed successfully. Exiting...")
+            cleanup()
+            exit()
+        else:
+            print("the spilitting process was successfull")
+
+        time.sleep(0.5) #so the ui s don't mix up
         
         # After splitter completes, run betterinpage.py - Second step
         print("Opening betterinpage UI...")
-        betterinpage.run()  # Calls the function in betterinpage.py to open the UI
-        print("betterinpage UI closed.")
+        BetterInpage_app = betterinpage.run()
+        if not BetterInpage_app.process_done:
+            print("BetterInpage Core process was not completed successfully. Exiting...")
+            cleanup()
+            exit()
+        else:
+            print("the cleaning process was successfull")
+
+        time.sleep(0.5) #so the ui s don't mix up
+
+        # After betterinpage.py completes, run page_remover.py - third step
+        print("Opening page_remover UI...")
+        ImageManagerApp_app = page_remover.run()
+        if not ImageManagerApp_app.process_done:
+            print("Processing started but incomplete. Exiting...")
+            cleanup()
+            exit()
+        else:
+            print("User skipped or completed the cleanup.")
+
         
-        # After betterinpage completes, run pdfer.py - Third step
+        # After page_remover completes, run pdfer.py - fourth step
         print("Generating PDF...")
-        pdfer.run()  # Calls the function in pdfer.py to start PDF generation
-        print("PDF generation completed.")
+        pdfer_app = pdfer.run()
+        if not pdfer_app.process_done:
+            print("PDF generation process was not completed successfully. Exiting...")
+            cleanup()
+            exit()
+        else:
+            print("PDF generating process was successfull")
 
     except Exception as e:
         print(f"An error occurred: {e}")
